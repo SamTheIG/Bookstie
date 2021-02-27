@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\BooksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/books', [BooksController::class, 'Index']);
+
+Route::get('/book/{id}', [BooksController::class, 'Show']);
