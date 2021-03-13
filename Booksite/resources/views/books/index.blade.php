@@ -9,9 +9,9 @@
 </head>
 <body>
     @foreach($books as $book)
-        <h1>
-            {{$book->name}}
-        </h1>
+        <div style="font-size: x-large">
+            <a href={{"/books/".$book->id}}>{{$book->Name}}</a>
+        </div>
     @endforeach
 </body>
 </html>

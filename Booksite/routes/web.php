@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::get('/books', [BooksController::class, 'Index']);
 
-Route::get('/book/{id}', [BooksController::class, 'Show']);
+ Route::get('/books/{id}', [BooksController::class, 'show']);

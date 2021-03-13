@@ -9,13 +9,18 @@ class BooksController extends Controller
 {
     public function Index()
     {
-        $books = DB::table('books')->get();
-        return view('book.index', compact('books'));
+        $books = DB::table('books')
+            -> orderBy('Name')
+            ->get();
+        return view('books.index', compact('books'));
     }
 
     public function Show($id)
     {
-        $book = DB::table('books')->find($id);
-        return view('book.show', compact('book'));
+        $book = DB::table('books')
+            ->find($id);
+        abort_unless($book, 404, 'Project not found');
+
+        return view('books.show', compact('book'));
     }
 }
