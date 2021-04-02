@@ -9,6 +9,9 @@
         *{
             background-color: darkgoldenrod;
         }
+        pre{
+            margin-left: 20px;
+        }
         #bookdetail{
             font-size: xx-large;
             color: cyan;

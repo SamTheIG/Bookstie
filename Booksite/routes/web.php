@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 Route::get('/books', [BooksController::class, 'Index']);
 
- Route::get('/books/{id}', [BooksController::class, 'show']);
+Route::get('/books/create', [BooksController::class, 'create']);
+
+Route::get('/books/{id}', [BooksController::class, 'show']);
+
+Route::post('books', [BooksController::class, 'store'])->name('SaveBook');
