@@ -8,3 +8,5 @@ A simple Book SocialMedia where you can find the book you want
 - [x] create pages for showing books and show a specific book by they id
 - [x] add a master page
 - [x] create a page for adding new book
+- [ ] add the Authentication to the website
+- [ ] only logged in users can create books
