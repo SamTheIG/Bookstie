@@ -1,4 +1,10 @@
 @extends('layouts.app')
+<style>
+    form{
+        padding-left: 460px;
+        padding-right: 460px;
+    }
+</style>
 @section('content')
     <form method="POST" action="{{route('SaveBook')}}">
         {{csrf_field()}}

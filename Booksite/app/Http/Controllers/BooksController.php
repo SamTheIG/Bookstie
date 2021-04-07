@@ -9,6 +9,11 @@ use Redirect;
 
 class BooksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create');
+    }
+
     public function Index()
     {
         $books = DB::table('books')
