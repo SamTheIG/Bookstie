@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @foreach($books as $book)
-        <div style="font-size: x-large">
+        <div style="padding-left: 60px; font-size: x-large">
             <a href={{"/books/".$book->id}}>{{$book->Name}}</a>
         </div>
     @endforeach
