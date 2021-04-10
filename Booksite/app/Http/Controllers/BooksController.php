@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Book;
 use Redirect;
@@ -16,9 +17,11 @@ class BooksController extends Controller
 
     public function Index()
     {
-        $books = DB::table('books')
+        /* $books = DB::table('books')
             -> orderBy('Name')
             ->get();
+        */
+        $books = Book::with(['user'])->orderBy('Name')->get();
         return view('books.index', compact('books'));
     }
 
@@ -46,7 +49,11 @@ class BooksController extends Controller
             'Price' => 'required|numeric',
             'Published_at' => 'required|date'
         ]);
-        $books = Book::create($request->except('_token'));
+        /*
+        $books = Book::create(array_add($request->except('_token'), Auth::user()->id));
+            OR
+        */
+        Auth::user()->books()->create($request->except('_token'));
         return Redirect::to('/books');
         // return view('books.index', compact('books'));
     }

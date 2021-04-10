@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'Name', 'Price', 'Published_at', 'ISBN', 'Pages'
     ];
-    use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
