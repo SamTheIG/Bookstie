@@ -28,6 +28,23 @@
             <label for="Published_at" class="form-label">Published_at</label>
             <input type="date" class="form-control" name="Published_at" id="Published_at" value="{{old('Published_at')}}">
         </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select name="category_id[]", id="category", class="form-control" multiple>
+
+
+                @foreach($categories as $category)
+
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+
+                @endforeach
+
+
+            </select>
+        </div>
+
+
         <button type="submit" class="btn btn-success">Save</button>
     </form>
     @include('shared.errors')

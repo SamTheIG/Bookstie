@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Book;
+use App\Models\Category;
 use Redirect;
 
 class BooksController extends Controller
@@ -37,7 +38,8 @@ class BooksController extends Controller
 
     public function create()
     {
-        return view('books.create');
+        $categories = Category::all();
+        return view('books.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -53,7 +55,8 @@ class BooksController extends Controller
         $books = Book::create(array_add($request->except('_token'), Auth::user()->id));
             OR
         */
-        Auth::user()->books()->create($request->except('_token'));
+        $book = Auth::user()->books()->create($request->except('_token'));
+        $book->categories()->attach($request->get('category_id'));
         return Redirect::to('/books');
         // return view('books.index', compact('books'));
     }

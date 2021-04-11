@@ -12,6 +12,7 @@
     <body>
 <div id="main" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
     <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+    <a href="{{ url('/books') }}" class="text-sm text-gray-700 underline">Books</a>
 <a class="text-sm text-gray-700 underline" href="{{ route('logout') }}"
            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
