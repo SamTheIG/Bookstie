@@ -38,6 +38,7 @@
 <div id="links">
 <a href="{{url('/home')}}">Home</a>
 <a href="{{url('/books')}}">Books</a>
+<a href="/books/{{$book->id}}/edit">Edit</a>
 </div>
         <div style="padding:10px 20px;float:left;">
             <pre id="bookdetail">

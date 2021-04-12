@@ -60,4 +60,19 @@ class BooksController extends Controller
         return Redirect::to('/books');
         // return view('books.index', compact('books'));
     }
+
+    public function edit($id)
+    {
+        $book = Book::findOrFail($id);
+        $categories = Category::all();
+        return view('books.edit', compact('book', 'categories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $book = Book::findOrFail($id);
+        $book->update($request->only(['Name', 'Pages', 'ISBN', 'Price', 'Published_at']));
+        $book->categories()->sync($request->get('category_id'));
+        return view('books.show', compact('book'));
+    }
 }

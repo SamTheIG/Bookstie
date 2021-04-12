@@ -23,7 +23,12 @@ Route::get('/books/create', [BooksController::class, 'create']);
 
 Route::get('/books/{id}', [BooksController::class, 'show']);
 
-Route::post('books', [BooksController::class, 'store'])->name('SaveBook');
+Route::post('/books', [BooksController::class, 'store'])->name('SaveBook');
+
+Route::get('/books/{id}/edit', [BooksController::class, 'edit']);
+
+Route::put('/books/{id}', [BooksController::class, 'update'])->name('UpdateBook');
+
 
 Auth::routes();
 
