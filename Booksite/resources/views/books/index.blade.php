@@ -3,6 +3,7 @@
     Books
 @endsection
 @section('Add')
+<a href="{{url('/books/authors')}}" class="text-sm text-gray-700 underline">Authors</a>
 <a href="{{url('/books/categories')}}" class="text-sm text-gray-700 underline">Categories</a>
 <a href="{{ url('/books/create') }}" class="text-sm text-gray-700 underline">Add</a>
 @endsection

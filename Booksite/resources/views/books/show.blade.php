@@ -50,6 +50,13 @@
             </pre>
         </div>
         <div style="padding:55px 90px 4px 60px;float:right;">
+            <p style="font-size:x-large; color:white;">Authors:</p>
+                <p id="categories">
+                    @foreach($book->authors as $author)
+                        {{$author->name.','}}
+                    @endforeach
+                </p>
+            
             <p style="font-size:x-large; color:white;">Categories:</p>
                 <p id="categories">
                     @foreach($book->categories as $category)

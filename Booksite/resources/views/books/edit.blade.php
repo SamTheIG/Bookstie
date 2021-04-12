@@ -31,6 +31,19 @@
         </div>
 
         <div class="mb-3">
+            <label for="author" class="form-label">Authors</label>
+            <select name="author_id[]", id="author", class="form-control" multiple>
+                @foreach($authors as $author)
+
+                    <option value="{{$author->id}}" {{$book->authors->contains('id', $author->id) ? 'selected' : ''}}>
+                        {{$author->name}}
+                    </option>
+
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="category" class="form-label">Category</label>
             <select name="category_id[]", id="category", class="form-control" multiple>
                 @foreach($categories as $category)

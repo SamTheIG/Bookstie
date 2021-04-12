@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\BooksController;
+use \App\Http\Controllers\AuthorsController;
 use \App\Http\Controllers\CategoriesController;
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,15 @@ Route::get('/', function () {
 
 Route::get('/books', [BooksController::class, 'Index']);
 
+Route::get('/books/authors', [AuthorsController::class, 'showauthors']);
+
 Route::get('/books/categories', [CategoriesController::class, 'showcategories']);
 
 Route::get('/books/create', [BooksController::class, 'create']);
+
+Route::get('/books/create/author', [AuthorsController::class, 'create']);
+
+Route::post('/books/authors', [AuthorsController::class, 'store'])->name('SaveAuthor');;
 
 Route::get('/books/create/category', [CategoriesController::class, 'create']);
 
