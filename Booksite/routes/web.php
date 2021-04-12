@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\BooksController;
+use \App\Http\Controllers\CategoriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,13 @@ Route::get('/', function () {
 
 Route::get('/books', [BooksController::class, 'Index']);
 
+Route::get('/books/categories', [CategoriesController::class, 'showcategories']);
+
 Route::get('/books/create', [BooksController::class, 'create']);
+
+Route::get('/books/create/category', [CategoriesController::class, 'create']);
+
+Route::post('/books/categories', [CategoriesController::class, 'store'])->name('SaveCategory');
 
 Route::get('/books/{id}', [BooksController::class, 'show']);
 
@@ -28,7 +35,6 @@ Route::post('/books', [BooksController::class, 'store'])->name('SaveBook');
 Route::get('/books/{id}/edit', [BooksController::class, 'edit']);
 
 Route::put('/books/{id}', [BooksController::class, 'update'])->name('UpdateBook');
-
 
 Auth::routes();
 
