@@ -12,5 +12,5 @@ A simple Book SocialMedia where you can find the book you want
 - [x] only logged in users can create books
 - [x] add categories
 - [x] edit and update books
-- [ ] add authors
-- [ ] create a page for adding new categories and authors
+- [x] add authors
+- [x] create a page for adding new categories and authors
