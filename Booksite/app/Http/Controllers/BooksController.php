@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BookCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,7 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\Author;
 use Redirect;
+use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 class BooksController extends Controller
 {
@@ -60,6 +62,8 @@ class BooksController extends Controller
         $book = Auth::user()->books()->create($request->except('_token'));
         $book->authors()->attach($request->get('author_id'));
         $book->categories()->attach($request->get('category_id'));
+
+        event(new BookCreated($book), Auth::user());
         return Redirect::to('/books');
         // return view('books.index', compact('books'));
     }
@@ -67,6 +71,7 @@ class BooksController extends Controller
     public function edit($id)
     {
         $book = Book::findOrFail($id);
+        abort_if(($book->user->id != Auth::user()->id), HttpResponse::HTTP_UNAUTHORIZED);
         $authors = Author::all();
         $categories = Category::all();
         return view('books.edit', compact('book', 'authors', 'categories'));
