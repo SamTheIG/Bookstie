@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Author;
+use Kavenegar\KavenegarApi;
 use Redirect;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
@@ -63,7 +64,11 @@ class BooksController extends Controller
         $book->authors()->attach($request->get('author_id'));
         $book->categories()->attach($request->get('category_id'));
 
-        event(new BookCreated($book), Auth::user());
+        // event(new BookCreated($book), Auth::user());
+
+        $client = new KavenegarApi(env('KAVENEGAR_API_KEY'));
+        $client->send(env('SENDER_MOBILE'), env('RECIVER_MOBILE'), 'Hi');
+
         return Redirect::to('/books');
         // return view('books.index', compact('books'));
     }
